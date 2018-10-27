@@ -30,14 +30,23 @@
     // there is an npm module called "cors" -- try to follow instructions on npm.org
     // page for that module  
 
-// 8. Hungry for more re: APIs?  
-// See if you can set up some routes that do pagination!
+// 8. Optional: Now that you've finished everything, let's make a version that's only an API
+// and not also a full-stack app.  Make sure you commit any uncommitted changes, and
+// checkout a new branch: api-only
+// in your api-only branch:
+  // delete the /views folder
+  // if there were a /public folder, we might delete that now too
+  // delete the /fruit controller and unlink it in server.js
+  // anything else that only had to do with this being a full stack app could be deleted now.
+
+// 9. Hungry for more re: APIs?  
+// See if you can set up some API routes to do pagination!
 // a URL for this endpoint might be 
   // GET '/api/fruits/:pageNumber' 
   // GET '/api/fruits/:resultsPerPage/:pageNumber/'
 // ----------
 
-// 9. Debug your project 2 app/deployment!  
+// 10. Debug your project 2 app/deployment!  
 // Don't add features, just take what you got and 
   // • get rid of all the weird errors and unexpected behavior
   // • spend a little time making it look nice and professional visually
