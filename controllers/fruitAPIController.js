@@ -1,12 +1,8 @@
 const express = require('express');
-// Next we set up the Router
 const router = express.Router();
-// require Our Model - Remember Model is
-// a representation of our data
-// The model should capitalized
 const Fruits = require('../models/fruits');
-// index route should show all the fruits
 
+// index route 
 router.get('/', (req, res) => {
   // finding every fruit without a search parameter
   Fruits.find({}, (err, allFruits) => {
@@ -33,16 +29,15 @@ router.get('/', (req, res) => {
 
 // create route
 router.post('/', (req, res) => {
-  // contents of the form will be in req.body
 
+  console.log(req, 'this is req.body, should be form info');
 
-  console.log(req.body, 'this is req.body, should be form info');
   if(req.body.readyToEat === 'on'){
     req.body.readyToEat = true;
   } else {
     req.body.readyToEat = false;
   }
-  // adding the contents of the form to the model
+
   Fruits.create(req.body, (err, createdFruit)=> {
     if(err){
       const errorResponse = {
@@ -90,9 +85,8 @@ router.get('/:id', (req, res) => {
 
 });
 
+// update route
 router.put('/:id', (req, res) => {
-  console.log(' am I hitting the put route') // Check to see if im hitting im route
-  // If Im not hitting the route, there is probably something with the action of form
 
   // If it is hitting the route, I want to see
   console.log(req.body, 'Why: IT tells what is coming from the form')

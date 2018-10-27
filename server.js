@@ -16,6 +16,13 @@
 // 6. make it take POST and PUT requests where the  
 // body is JSON instead of x-www-form-urlencoded
 // (reminder: in postman choose "Raw" and then JSON from the menu that appears)
+// HINTS: where do we find the data in an incoming post request?  
+// What module is making that happen for us?  
+// Can that module be configured a little differently?  
+// * pretty minimal changes are needed here
+// Want more hints? Read this entire page: https://www.npmjs.com/package/body-parser
+// Read the response carefully to make sure what you're adding to the database is 
+// actually what you think is getting added
 
 // 7. read about CORS and try to set it up in this API -- 
 // as basic as possible so that ANY client can talk to your API
@@ -47,26 +54,17 @@ const methodOverride = require('method-override');
 // require our db
 require('./db/db');
 
-// initialized some middleware
-// bodyParser allows us to read the
-// contents of a form, or the body of a request
-// the app.use sets up what middleware you are using
-app.use(bodyParser.urlencoded({extended: false}))
+// Middleware
+app.use(bodyParser.urlencoded({extended: false})) // <----CHANGE THIS
 app.use(methodOverride('_method'));
 // USE CORS HERE
 
 
-// Require the controller after the middleware
+// Controllers
 const fruitController = require('./controllers/fruitController');
 const fruitAPIController = require('./controllers/fruitAPIController');
-
-// This means every route in the fruitController
-// now starts with /fruits
 app.use('/fruits', fruitController);
 app.use('/api/fruits', fruitAPIController);
-
-
-
 
 
 app.listen(3000, () => {
